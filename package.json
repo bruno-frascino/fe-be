@@ -1,0 +1,34 @@
+{
+  "name": "fe-be",
+  "version": "1.0.0",
+  "description": "File explorer back end",
+  "main": "index.js",
+  "repository": "https://github.com/bruno-frascino/fe-be.git",
+  "author": "Bruno Frascino <bfrascino80@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "nodemon": "^2.0.20",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "@types/config": "^3.3.0",
+    "@types/express": "^4.17.14",
+    "@types/node": "^18.11.9",
+    "@types/pino": "^7.0.5",
+    "@types/sqlite3": "^3.1.8",
+    "config": "^3.3.8",
+    "express": "^4.18.2",
+    "pino": "^8.7.0",
+    "pino-pretty": "^9.1.1",
+    "sqlite3": "^5.1.2"
+  },
+  "scripts": {
+    "start": "node dist/app.js",
+    "dev": "nodemon --config nodemon.json src/app.ts",
+    "build": "tsc -p .",
+    "go": "yarn build && yarn start",
+    "clean": "rm -rf ./dist"
+  }
+}
