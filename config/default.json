@@ -1,6 +1,7 @@
 {
   "port": 2020,
   "host": "localhost",
-  "dbName": "fileex.db",
-  "LOG_LEVEL": "info"
+  "DB_NAME": "febe.db",
+  "LOG_LEVEL": "info", 
+  "DB_VERBOSE": true
 }

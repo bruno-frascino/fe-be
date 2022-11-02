@@ -3,4 +3,5 @@ export enum ConfigKeys {
   host = "host",
   DB_NAME = "DB_NAME",
   LOG_LEVEL = "LOG_LEVEL",
+  DB_VERBOSE = "DB_VERBOSE"
 }
