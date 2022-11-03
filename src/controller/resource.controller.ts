@@ -5,8 +5,8 @@ import { getRootResources } from '../service/resource.service';
 
 export async function getResourcesHandler(req: Request, res: Response, next: NextFunction) {
   try {
-    const fileSystem: Resource[] = await getRootResources();
-    res.send(fileSystem);
+    const rootResources: Resource[] = await getRootResources();
+    res.send(rootResources);
   
   } catch (err) {
     logger.error(err);
