@@ -2,13 +2,20 @@ import { NextFunction, Request, Response } from 'express';
 import logger from '../logger';
 import { isResource, Resource } from '../model/resource.model';
 import { AddResponse } from '../model/utils.model';
-import { addResource, getRootResources } from '../service/resource.service';
+import { addResource, getResourcesByName, getRootResources } from '../service/resource.service';
 
 export async function getResourcesHandler(req: Request, res: Response, next: NextFunction) {
   try {
-    const rootResources: Resource[] = await getRootResources();
-    res.send(rootResources);
-  
+    const keyword = req.query.keyword as string || '';
+
+    if(!keyword){
+      const rootResources: Resource[] = await getRootResources();
+      res.send(rootResources);
+    } else {
+      // todo sanitize keyword
+      const resources: Resource[] = await getResourcesByName(keyword);
+      res.send(resources);
+    }
   } catch (err) {
     logger.error(err);
     next(err);

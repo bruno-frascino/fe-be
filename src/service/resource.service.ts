@@ -1,6 +1,6 @@
 import { Resource } from "../model/resource.model";
 import { AddResponse } from "../model/utils.model";
-import { addResourceData, getRootLevelResources } from "../repository/sqlite";
+import { addResourceData, getResourcesDataByName, getRootLevelResources } from "../repository/sqlite";
 
 export async function getRootResources(): Promise<Resource[]> {
   try {    
@@ -8,6 +8,15 @@ export async function getRootResources(): Promise<Resource[]> {
   
   } catch(err){
     throw Error('Failed to retrieve root files and folders');
+  }
+}
+
+export async function getResourcesByName(keyword: string): Promise<Resource[]> {
+  try {    
+    return getResourcesDataByName(keyword);
+  
+  } catch(err){
+    throw Error('Failed to retrieve files and folders');
   }
 }
 

@@ -92,3 +92,12 @@ export async function addResourceData(resource: Resource) {
     $content: resource.parentId
   })) as AddResponse;
 }
+
+export async function getResourcesDataByName(keyword: string) {
+  const sql = `SELECT * FROM RESOURCE 
+                WHERE RESOURCE.name LIKE $keyword
+                ORDER BY RESOURCE.name`;
+  
+  return (await all(sql, {$keyword: `${keyword}%`})) as Resource[];
+
+}
