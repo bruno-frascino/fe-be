@@ -1,5 +1,6 @@
 import { Resource } from "../model/resource.model";
-import { getRootLevelResources } from "../repository/sqlite";
+import { AddResponse } from "../model/utils.model";
+import { addResourceData, getRootLevelResources } from "../repository/sqlite";
 
 export async function getRootResources(): Promise<Resource[]> {
   try {    
@@ -7,5 +8,14 @@ export async function getRootResources(): Promise<Resource[]> {
   
   } catch(err){
     throw Error('Failed to retrieve root files and folders');
+  }
+}
+
+export async function addResource(resource: Resource): Promise<AddResponse> {
+  try {    
+    return addResourceData(resource);
+  
+  } catch(err){
+    throw Error(`Failed to add the resource ${JSON.stringify(resource)}`);
   }
 }

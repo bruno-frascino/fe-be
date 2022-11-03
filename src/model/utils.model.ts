@@ -5,3 +5,7 @@ export enum ConfigKeys {
   LOG_LEVEL = "LOG_LEVEL",
   DB_VERBOSE = "DB_VERBOSE"
 }
+
+export interface AddResponse {
+  id: number;
+}

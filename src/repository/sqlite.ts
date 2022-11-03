@@ -1,7 +1,7 @@
 import sqlite3 from 'sqlite3';
 import logger from '../logger';
 import config from 'config';
-import { ConfigKeys } from '../model/utils.model';
+import { AddResponse, ConfigKeys } from '../model/utils.model';
 import { Resource } from '../model/resource.model';
 
 let db: sqlite3.Database;
@@ -78,4 +78,17 @@ export async function getRootLevelResources() {
                 ORDER BY RESOURCE.name`;
   
   return (await all(sql)) as Resource[];
+}
+
+export async function addResourceData(resource: Resource) {
+  const sql = `INSERT INTO RESOURCE
+            (id, name, type, content, parentId) VALUES(
+              null, $name, $type, $content, $parentId
+            )`;
+  
+  return (await run(sql, {
+    $name: resource.name,
+    $type: resource.type,
+    $content: resource.parentId
+  })) as AddResponse;
 }
